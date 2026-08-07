@@ -1,0 +1,78 @@
+{
+  "reportTitle": "Zizamele Trust - Department of Labour Employment Vetting & Selection Report",
+  "generatedBy": "cengcanis@gmail.com",
+  "generatedAt": "2026-07-18T09:03:29.417Z",
+  "platform": "Zizamele Trust Sovereign Compliance Router",
+  "totalDecisionsCount": 2,
+  "summaryStats": {
+    "shortlisted": 0,
+    "hired": 2,
+    "rejected": 0
+  },
+  "decisions": [
+    {
+      "decisionId": "DEC-AUTO-33191",
+      "recordedAt": "2026-07-18T09:03:28.813Z",
+      "recordedBy": "cengcanis@gmail.com",
+      "decisionType": "hired",
+      "justification": "Outstanding credentials check. Passed DHA/SAQA audit verification and shows 93% role suitability alignment.",
+      "vertexAiCompatibilityScore": 93,
+      "jobDetails": {
+        "id": "job-002",
+        "title": "National Infrastructure Project Lead",
+        "requiredNqfLevel": 7
+      },
+      "candidateDetails": {
+        "id": "CAND-LOCAL-9412",
+        "firstName": "Zolani",
+        "lastName": "Mandela",
+        "email": "zolani@mandela.co.za",
+        "nationalId": "9412155092083",
+        "nqfLevel": 7,
+        "dhaIdentityVerified": true,
+        "saqaAccreditationVerified": true
+      }
+    },
+    {
+      "decisionId": "DEC-AUTO-38604",
+      "recordedAt": "2026-07-18T09:03:29.417Z",
+      "recordedBy": "cengcanis@gmail.com",
+      "decisionType": "hired",
+      "justification": "Outstanding credentials check. Passed DHA/SAQA audit verification and shows 87% role suitability alignment.",
+      "vertexAiCompatibilityScore": 87,
+      "jobDetails": {
+        "id": "job-001",
+        "title": "Senior Sovereign System Architect",
+        "requiredNqfLevel": 8
+      },
+      "candidateDetails": {
+        "id": "CAND-FOREIGN-9310",
+        "firstName": "Farai",
+        "lastName": "Moyo",
+        "email": "farai.moyo@gmail.com",
+        "nationalId": "9310125081084",
+        "nqfLevel": 8,
+        "dhaIdentityVerified": true,
+        "saqaAccreditationVerified": true
+      }
+    }
+  ],
+  "auditTraceHistoryLogs": [
+    {
+      "id": "AUD-HASH-56859",
+      "action": "LOCAL PROFILE INTEGRITY PASSED",
+      "details": "Completed biometric lookups and qualifications vetting for local SA applicant Zolani Mandela.",
+      "candidateId": "CAND-LOCAL-9412",
+      "timestamp": "2026-07-18T09:03:28.814Z",
+      "performedBy": "cengcanis@gmail.com"
+    },
+    {
+      "id": "AUD-HASH-47482",
+      "action": "FOREIGN ACCREDITATION CONFIRMED",
+      "details": "Evaluated and verified foreign academic credentials alignment under SAQA Evaluation No: DFQE-2026-00382.",
+      "candidateId": "CAND-FOREIGN-9310",
+      "timestamp": "2026-07-18T09:03:29.417Z",
+      "performedBy": "cengcanis@gmail.com"
+    }
+  ]
+}

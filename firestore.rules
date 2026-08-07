@@ -1,0 +1,180 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Catch-All Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Standard hardwired security helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isEmailVerified() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isAdmin() {
+      return isSignedIn() && 
+             request.auth.token.email == "cengcanis@gmail.com" && 
+             request.auth.token.email_verified == true;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // 2. Candidates Collection Rules
+    match /candidates/{candidateId} {
+      function isValidCandidate(candidate) {
+        return candidate.id is string &&
+               candidate.id.size() <= 128 &&
+               candidate.nationalId is string &&
+               candidate.nationalId.size() == 13 &&
+               candidate.firstName is string &&
+               candidate.firstName.size() <= 100 &&
+               candidate.lastName is string &&
+               candidate.lastName.size() <= 100 &&
+               candidate.email is string &&
+               candidate.email.size() <= 120 &&
+               candidate.studentNumber is string &&
+               candidate.studentNumber.size() <= 30 &&
+               candidate.nqfLevel is int &&
+               candidate.nqfLevel >= 1 &&
+               candidate.nqfLevel <= 10 &&
+               candidate.qualificationName is string &&
+               candidate.qualificationName.size() <= 200 &&
+               candidate.institution is string &&
+               candidate.institution.size() <= 200 &&
+               (!('drivingLicense' in candidate) || candidate.drivingLicense is string) &&
+               (!('drivingCodes' in candidate) || candidate.drivingCodes is string) &&
+               (!('extraSkills' in candidate) || candidate.extraSkills is string) &&
+               (!('linkedinImported' in candidate) || candidate.linkedinImported is bool) &&
+               (!('linkedinVerified' in candidate) || candidate.linkedinVerified is bool) &&
+               (!('linkedinImportedAt' in candidate) || candidate.linkedinImportedAt is string) &&
+               (!('linkedinVerifiedAt' in candidate) || candidate.linkedinVerifiedAt is string) &&
+               (!('linkedinReferenceId' in candidate) || candidate.linkedinReferenceId is string) &&
+               (!('linkedinVettedSummary' in candidate) || candidate.linkedinVettedSummary is string) &&
+               (!('linkedinConfidenceScore' in candidate) || candidate.linkedinConfidenceScore is int) &&
+               (!('workHistory' in candidate) || candidate.workHistory is string) &&
+               (!('isInternational' in candidate) || candidate.isInternational is bool) &&
+               (!('originCountry' in candidate) || candidate.originCountry is string) &&
+               (!('foreignEvaluationNo' in candidate) || candidate.foreignEvaluationNo is string) &&
+               (!('foreignEvaluationAuthority' in candidate) || candidate.foreignEvaluationAuthority is string) &&
+               (!('internationalVerified' in candidate) || candidate.internationalVerified is bool) &&
+               (!('uploadedDocuments' in candidate) || candidate.uploadedDocuments is list);
+      }
+
+      allow get: if isSignedIn() && (candidateId == request.auth.uid || isAdmin());
+      
+      // Let employers or verified seekers scan list securely without blanket leakage
+      allow list: if isSignedIn() && (resource.data.id == request.auth.uid || isAdmin());
+
+      allow create: if isEmailVerified() && 
+                    candidateId == request.auth.uid && 
+                    isValidId(candidateId) && 
+                    isValidCandidate(incoming()) &&
+                    incoming().dhaVerified == false &&
+                    incoming().saqaVerified == false &&
+                    incoming().createdAt == request.time;
+
+      allow update: if (
+        isEmailVerified() && 
+        candidateId == request.auth.uid && 
+        isValidId(candidateId) &&
+        isValidCandidate(incoming()) &&
+        incoming().id == existing().id &&
+        incoming().nationalId == existing().nationalId &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().dhaVerified == existing().dhaVerified &&
+        incoming().saqaVerified == existing().saqaVerified &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'firstName', 'lastName', 'email', 'studentNumber', 'nqfLevel', 'qualificationName', 'institution',
+          'drivingLicense', 'drivingCodes', 'extraSkills', 'status', 'rankScore', 'matchFeedback', 'alignmentRating', 'verifiedAt',
+          'linkedinImported', 'linkedinVerified', 'linkedinImportedAt', 'linkedinVerifiedAt', 'linkedinReferenceId', 'linkedinVettedSummary', 'linkedinConfidenceScore', 'workHistory',
+          'isInternational', 'originCountry', 'foreignEvaluationNo', 'foreignEvaluationAuthority', 'internationalVerified', 'uploadedDocuments'
+        ])
+      ) || isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // 3. Jobs Collection Rules
+    match /jobs/{jobId} {
+      function isValidJob(job) {
+        return job.id is string &&
+               job.title is string &&
+               job.title.size() <= 200 &&
+               job.requiredNqfLevel is int &&
+               job.requiredNqfLevel >= 1 &&
+               job.requiredNqfLevel <= 10 &&
+               job.department is string &&
+               job.department.size() <= 100 &&
+               job.description is string &&
+               job.description.size() <= 2000;
+      }
+
+      allow read: if isSignedIn();
+      allow create: if isEmailVerified() && isValidId(jobId) && isValidJob(incoming()) && (isAdmin() || incoming().createdAt == request.time);
+      allow update: if isEmailVerified() && isValidId(jobId) && isValidJob(incoming()) && isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 4. Hiring Decisions Rules
+    match /hiringDecisions/{decisionId} {
+      function isValidDecision(dec) {
+        return dec.id is string &&
+               dec.jobId is string &&
+               dec.candidateId is string &&
+               dec.decision in ['shortlisted', 'hired', 'rejected'] &&
+               dec.recordedBy is string &&
+               dec.recordedAt is string; // ISO or string timestamp representation
+      }
+
+      // Restrict access: Only authenticated administrative users can read sensitive hiring data
+      allow read: if isAdmin();
+      
+      // Restrict access: Only authenticated administrative users can record hiring decisions
+      allow create: if isAdmin() && 
+                    isValidId(decisionId) && 
+                    isValidDecision(incoming()) &&
+                    exists(/databases/$(database)/documents/candidates/$(incoming().candidateId)) &&
+                    exists(/databases/$(database)/documents/jobs/$(incoming().jobId));
+
+      // Hiring decisions are immutable logs - no arbitrary updates. Admin escape hatch exists.
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // 5. Audit Log Collection rules (Strict Append-Only Compliance logs)
+    match /auditLogs/{logId} {
+      function isValidAuditLog(log) {
+        return log.id is string &&
+               log.action is string &&
+               log.details is string &&
+               log.performedBy is string &&
+               log.timestamp is string &&
+               log.systemHash is string;
+      }
+
+      // Restrict access: Only authenticated administrative users can read compliance audit logs
+      allow read: if isAdmin();
+      
+      // Restrict access: Only authenticated administrative users can append audit logs
+      allow create: if isAdmin() && isValidId(logId) && isValidAuditLog(incoming());
+      
+      // Completely block update or delete to make logs immutable, even for admins
+      allow update, delete: if false;
+    }
+  }
+}

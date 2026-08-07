@@ -1,0 +1,8 @@
+{
+  "name": "Funa Ispan Mzantsi",
+  "description": "High-security South African employment and compliance portal verified against DHA and SAQA systems, featuring automated Vertex AI applicant ranking and an immutable National Department of Labour compliance audit log.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

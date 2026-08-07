@@ -1,0 +1,237 @@
+{
+  "entities": {
+    "Candidate": {
+      "title": "Candidate",
+      "description": "A job applicant registration record verified against South African Department of Home Affairs (DHA) and South African Qualifications Authority (SAQA).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "UID of the candidate user matching their authentication record."
+        },
+        "nationalId": {
+          "type": "string",
+          "description": "South African 13-digit National Identity Number."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name of the candidate matching Department of Home Affairs records."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Surname of the candidate matching Department of Home Affairs records."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Primary communication email."
+        },
+        "studentNumber": {
+          "type": "string",
+          "description": "Unified LURITS (Learner Unit Record Information Tracking System) Student Number."
+        },
+        "nqfLevel": {
+          "type": "integer",
+          "enum": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          "description": "Verified South African National Qualifications Framework (NQF) level."
+        },
+        "qualificationName": {
+          "type": "string",
+          "description": "Title of the qualification achieved."
+        },
+        "institution": {
+          "type": "string",
+          "description": "NQF accredited institution where the qualification was achieved."
+        },
+        "dhaVerified": {
+          "type": "boolean",
+          "description": "Flag representing verified status matching the Department of Home Affairs identity system."
+        },
+        "saqaVerified": {
+          "type": "boolean",
+          "description": "Flag representing verified status matching SAQA records."
+        },
+        "verifiedAt": {
+          "type": "string",
+          "description": "ISO 8601 server timestamp when government database integrations verified these details."
+        },
+        "rankScore": {
+          "type": "number",
+          "description": "AI-calculated suitability rank score for active job criteria."
+        },
+        "matchFeedback": {
+          "type": "string",
+          "description": "AI-generated explanation of the candidate qualification suitability."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "verified", "rejected", "flagged"],
+          "description": "Current vetting state of the candidate profile."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO 8601 creation timestamp."
+        },
+        "drivingLicense": {
+          "type": "string",
+          "description": "Driving license status/type of the applicant (e.g., Code B, Code EB, None)."
+        },
+        "drivingCodes": {
+          "type": "string",
+          "description": "Specific driving license codes/vehicles certified."
+        },
+        "extraSkills": {
+          "type": "string",
+          "description": "Comma-separated list of secondary skills (e.g., forklift, packing, retail)."
+        },
+        "linkedinImported": {
+          "type": "boolean",
+          "description": "Indicates whether work experience has been imported from LinkedIn profile."
+        },
+        "linkedinVerified": {
+          "type": "boolean",
+          "description": "Indicates whether work experience has been verified against tax or employment registers."
+        },
+        "linkedinImportedAt": {
+          "type": "string",
+          "description": "Timestamp when candidate imported LinkedIn data."
+        },
+        "workHistory": {
+          "type": "string",
+          "description": "JSON serialized array of past roles and companies."
+        },
+        "uploadedDocuments": {
+          "type": "array",
+          "description": "Scanned credential certificates and foreign evaluation documents stored securely for state compliance audits.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "size": { "type": "integer" },
+              "type": { "type": "string" },
+              "dataUrl": { "type": "string" },
+              "uploadedAt": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["id", "nationalId", "firstName", "lastName", "email", "studentNumber", "nqfLevel", "qualificationName", "institution"]
+    },
+    "Job": {
+      "title": "Job",
+      "description": "Employment opportunity posted by an employer listing NQF requirements.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "requiredNqfLevel": {
+          "type": "integer"
+        },
+        "department": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["open", "filled", "cancelled"]
+        },
+        "createdAt": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "title", "requiredNqfLevel", "department", "description"]
+    },
+    "HiringDecision": {
+      "title": "HiringDecision",
+      "description": "An employer's recorded decision for a job post containing a compliance sign-off.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "jobId": {
+          "type": "string"
+        },
+        "candidateId": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": ["shortlisted", "hired", "rejected"]
+        },
+        "rankScoreAtDecision": {
+          "type": "number"
+        },
+        "justification": {
+          "type": "string",
+          "description": "Detailed explanation of the hire/reject decision matching South African Labour standards."
+        },
+        "recordedBy": {
+          "type": "string"
+        },
+        "recordedAt": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "jobId", "candidateId", "decision", "recordedBy", "recordedAt"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "An immutable log of key verification actions and hiring decisions for Department of Labour audit compliance.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "candidateId": {
+          "type": "string"
+        },
+        "details": {
+          "type": "string"
+        },
+        "performedBy": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "systemHash": {
+          "type": "string",
+          "description": "SHA-256 integrity hash validating the block state."
+        }
+      },
+      "required": ["id", "action", "details", "performedBy", "timestamp", "systemHash"]
+    }
+  },
+  "firestore": {
+    "/candidates/{candidateId}": {
+      "schema": "Candidate",
+      "description": "Verified candidate profiles."
+    },
+    "/jobs/{jobId}": {
+      "schema": "Job",
+      "description": "Employment opportunities."
+    },
+    "/hiringDecisions/{decisionId}": {
+      "schema": "HiringDecision",
+      "description": "Compliant hiring records."
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Immutable compliance activity records."
+    }
+  }
+}

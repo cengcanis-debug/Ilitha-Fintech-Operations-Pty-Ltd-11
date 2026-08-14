@@ -19,6 +19,8 @@ jobs:
 
       - name: Sentinel Cloud Scan
         run: |
+
+https://cengcanis-debug.github.io/Ilitha-Fintech-Operations-Pty-Ltd-11/
           # 1. Runs the script to check Sifiso and 4 projects
           # This assumes cloud_watcher.py is in your scripts folder
           python3 scripts/cloud_watcher.py || echo "Watcher script not found, creating placeholder status..."

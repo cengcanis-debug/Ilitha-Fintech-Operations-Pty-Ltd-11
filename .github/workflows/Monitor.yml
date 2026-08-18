@@ -67,4 +67,211 @@
     <p><a href="legal/privacy-policy.html">Privacy Policy</a> | 100% Youth & Female Owned</p>
 </div>
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilitha Fintech Operations | Mothership Hub</title>
+    <style>
+        :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
+        body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
+        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); }
+        .logo-torch { font-size: 50px; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; transition: 0.3s; text-align: left; }
+        .card:hover { transform: translateY(-5px); border-color: #00ffcc; }
+        .btn-wa { display: block; background: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
+        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; }
+        .compliance-badge { color: var(--gold); font-size: 10px; font-weight: bold; border: 1px solid var(--gold); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-torch">🕯️</div>
+    <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <p>Lighting the Path to Economic Opportunity</p>
+    <div style="color: #00ffcc; font-size: 12px;">● Sentinel Autonomous Protection: ACTIVE</div>
+</header>
+<div class="grid">
+    <div class="card">
+        <div class="compliance-badge">EDUCATION</div>
+        <h3>🎓 Sifiso SA AI Tutor</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">NEW: K53 ARTISAN</div>
+        <h3>🚦 K53 Learner's Mentor</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_K53:+Start+K53+Training.">GET YOUR LEARNERS</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">LEGAL-TECH</div>
+        <h3>⚖️ LegisEstateSA</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Estate:+Attorney+Access.">FIRM ONBOARDING</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">FINTECH</div>
+        <h3>🇿🇦 ZAtax Adviser</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tax:+Get+SARS+Help.">GET TAX HELP</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">GOV-TECH</div>
+        <h3>📑 SA Tender Assist</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tender:+Check+Compliance.">CHECK TENDERS</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">JOBS</div>
+        <h3>💼 Career & Ispan</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Jobs:+Start+Coaching.">START COACHING</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">ADMIN</div>
+        <h3>🤝 Collaborations</h3>
+        <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW SPONSOR LETTER</a>
+    </div>
+</div>
+<div class="footer">
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
+    <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 71 121 8698</p>
+    <p><a href="legal/privacy-policy.html">Privacy Policy</a> | 100% Youth & Female Owned</p>
+</div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilitha Fintech Operations | Mothership Hub</title>
+    <style>
+        :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
+        body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
+        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); }
+        .logo-torch { font-size: 50px; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; transition: 0.3s; text-align: left; }
+        .card:hover { transform: translateY(-5px); border-color: #00ffcc; }
+        .btn-wa { display: block; background: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
+        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; }
+        .compliance-badge { color: var(--gold); font-size: 10px; font-weight: bold; border: 1px solid var(--gold); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-torch">🕯️</div>
+    <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <p>Lighting the Path to Economic Opportunity</p>
+    <div style="color: #00ffcc; font-size: 12px;">● Sentinel Autonomous Protection: ACTIVE</div>
+</header>
+<div class="grid">
+    <div class="card">
+        <div class="compliance-badge">EDUCATION</div>
+        <h3>🎓 Sifiso SA AI Tutor</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">NEW: K53 ARTISAN</div>
+        <h3>🚦 K53 Learner's Mentor</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_K53:+Start+K53+Training.">GET YOUR LEARNERS</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">LEGAL-TECH</div>
+        <h3>⚖️ LegisEstateSA</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Estate:+Attorney+Access.">FIRM ONBOARDING</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">FINTECH</div>
+        <h3>🇿🇦 ZAtax Adviser</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tax:+Get+SARS+Help.">GET TAX HELP</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">GOV-TECH</div>
+        <h3>📑 SA Tender Assist</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tender:+Check+Compliance.">CHECK TENDERS</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">JOBS</div>
+        <h3>💼 Career & Ispan</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Jobs:+Start+Coaching.">START COACHING</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">ADMIN</div>
+        <h3>🤝 Collaborations</h3>
+        <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW SPONSOR LETTER</a>
+    </div>
+</div>
+<div class="footer">
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
+    <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 71 121 8698</p>
+    <p><a href="legal/privacy-policy.html">Privacy Policy</a> | 100% Youth & Female Owned</p>
+</div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilitha Fintech Operations | Mothership Hub</title>
+    <style>
+        :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
+        body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
+        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); }
+        .logo-torch { font-size: 50px; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; transition: 0.3s; text-align: left; }
+        .card:hover { transform: translateY(-5px); border-color: #00ffcc; }
+        .btn-wa { display: block; background: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
+        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; }
+        .compliance-badge { color: var(--gold); font-size: 10px; font-weight: bold; border: 1px solid var(--gold); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo-torch">🕯️</div>
+    <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <p>Lighting the Path to Economic Opportunity</p>
+    <div style="color: #00ffcc; font-size: 12px;">● Sentinel Autonomous Protection: ACTIVE</div>
+</header>
+<div class="grid">
+    <div class="card">
+        <div class="compliance-badge">EDUCATION</div>
+        <h3>🎓 Sifiso SA AI Tutor</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">NEW: K53 ARTISAN</div>
+        <h3>🚦 K53 Learner's Mentor</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_K53:+Start+K53+Training.">GET YOUR LEARNERS</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">LEGAL-TECH</div>
+        <h3>⚖️ LegisEstateSA</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Estate:+Attorney+Access.">FIRM ONBOARDING</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">FINTECH</div>
+        <h3>🇿🇦 ZAtax Adviser</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tax:+Get+SARS+Help.">GET TAX HELP</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">GOV-TECH</div>
+        <h3>📑 SA Tender Assist</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tender:+Check+Compliance.">CHECK TENDERS</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">JOBS</div>
+        <h3>💼 Career & Ispan</h3>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Jobs:+Start+Coaching.">START COACHING</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">ADMIN</div>
+        <h3>🤝 Collaborations</h3>
+        <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW SPONSOR LETTER</a>
+    </div>
+</div>
+<div class="footer">
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
+    <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 71 121 8698</p>
+    <p><a href="legal/privacy-policy.html">Privacy Policy</a> | 100% Youth & Female Owned</p>
+</div>
+</body>
 </html>

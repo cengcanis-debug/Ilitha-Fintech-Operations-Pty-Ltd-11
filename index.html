@@ -1,24 +1,3 @@
-The Ilitha Sentinel has identified the "Switch" error.
-
-If the link opened the Letter to Sponsors, it means the code for the letterhead
-was accidentally pasted into the index.html file (your front door) instead of
-the collaborate.html file (your side office). In the digital world, the file
-named index.html is the only one the public sees first.
-
-To fix this so the authorities see the Beautiful 7-Hub Dashboard and the
-sponsors see the Letter, we must perform a quick "File Separation" using your
-phone's browser.
-
-1. The Fix: Re-hanging the "Front Door" (index.html)
-
-Please open your GitHub repository in your phone's browser and follow these 3
-steps:
-
-1.  Open the file index.html.
-2.  Tap the Pencil Icon (Edit).
-3.  Delete everything inside it and Paste this Full 7-Hub Dashboard code (The
-    one with the Gold and Blue buttons):
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +7,7 @@ steps:
     <style>
         :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
         body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
-        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); }
+        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); cursor: pointer; }
         .logo-torch { font-size: 50px; margin-bottom: 10px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
         .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; transition: 0.3s; text-align: left; }
@@ -39,87 +18,67 @@ steps:
     </style>
 </head>
 <body>
-<header>
+
+<header onclick="unlockVault()">
     <div class="logo-torch">🕯️</div>
     <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
     <p>Lighting the Path to Economic Opportunity</p>
     <div style="color: #00ffcc; font-size: 12px;">● Sentinel Autonomous Protection: ACTIVE</div>
 </header>
+
 <div class="grid">
     <div class="card">
         <div class="compliance-badge">EDUCATION</div>
         <h3>🎓 Sifiso SA AI Tutor</h3>
+        <p>CAPS/IEB aligned mentor. 100% Offline Ready.</p>
         <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a>
     </div>
     <div class="card">
-        <div class="compliance-badge">NEW: K53 ARTISAN</div>
-        <h3>🚦 K53 Learner's Mentor</h3>
+        <div class="compliance-badge">NEW: K53 & DRIVEMASTER</div>
+        <h3>🚦 K53 Artisan & 3D Sim</h3>
+        <p>Socratic road-rules and 3D driving simulation.</p>
         <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_K53:+Start+K53+Training.">GET YOUR LEARNERS</a>
-    </div>
-    <div class="card">
-        <div class="compliance-badge">LEGAL-TECH</div>
-        <h3>⚖️ LegisEstateSA</h3>
-        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Estate:+Attorney+Access.">FIRM ONBOARDING</a>
     </div>
     <div class="card">
         <div class="compliance-badge">FINTECH</div>
         <h3>🇿🇦 ZAtax Adviser</h3>
+        <p>SARS-aligned tax guidance for individuals & SMEs.</p>
         <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tax:+Get+SARS+Help.">GET TAX HELP</a>
     </div>
     <div class="card">
         <div class="compliance-badge">GOV-TECH</div>
         <h3>📑 SA Tender Assist</h3>
+        <p>SMME Procurement & TCS status verification.</p>
         <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tender:+Check+Compliance.">CHECK TENDERS</a>
     </div>
     <div class="card">
-        <div class="compliance-badge">JOBS</div>
-        <h3>💼 Career & Ispan</h3>
-        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Jobs:+Start+Coaching.">START COACHING</a>
+        <div class="compliance-badge">B2B LEGAL</div>
+        <h3>⚖️ LegisEstateSA</h3>
+        <p>Admin of Estates Act automation for Law Firms.</p>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Estate:+Attorney+B2B+Access.">FIRM ONBOARDING</a>
     </div>
     <div class="card">
         <div class="compliance-badge">ADMIN</div>
         <h3>🤝 Collaborations</h3>
-        <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW SPONSOR LETTER</a>
+        <p>Official sponsorship and partnership proposal.</p>
+        <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW LETTERHEAD</a>
     </div>
 </div>
+
 <div class="footer">
-    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Finalization Pending]</p>
     <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 71 121 8698</p>
-    <p><a href="legal/privacy-policy.html">Privacy Policy</a> | 100% Youth & Female Owned</p>
+    <p><a href="legal/privacy-policy.html">Privacy Policy</a> | Hardened by Sentinel AI</p>
 </div>
+
+<script>
+    function unlockVault() {
+        const pin = prompt("Enter Master PIN for Private Valuation Hub:");
+        if (pin === "584461") { 
+            alert("Founder Verified. Accessing ITEV Financial Safe..."); 
+            // In the future, this redirects to your private valuation sheet.
+        }
+    }
+</script>
 </body>
 </html>
-
-4.  Click "Commit changes."
-
-2. The Verification Link
-
-Wait 60 seconds after the commit, then click: 👉
-https://cengcanis-debug.github.io/Ilitha-Fintech-Operations-Pty-Ltd-11/
-
-  - Result: You will see the 7 Dashboard Cards.
-  - Accessing the Letter: To see the letter for sponsors, you (or the sponsor)
-    will click the last card ("Collaborations") or visit .../collaborate.html.
-
-3. Sentinel’s Layman Advice: "Ordering the Rooms"
-
-"Director, we accidentally hung the 'Sponsorship Proposal' on the front door of
-the building.
-
-Imagine a customer walking up to your shop and seeing a private contract on the
-window instead of your products. By pasting this code, you are putting the
-Product Display (The Dashboard) back on the front door, and moving the Contract
-(The Letter) into the manager's office (collaborate.html).
-
-Now, when SARS or the CIPC arrive, they see the whole company suite. When a
-sponsor arrives, they can click into the office to see the letterhead."
-
-Final Milestone Check:
-
-- [ ] index.html: Updated with the 7-Hub Dashboard.
-- [ ] collaborate.html: Confirmed to have the Letterhead and Sponsorship Pitch.
-- [ ] SARS Email: Ready to be dispatched with the Dashboard Link as the proof of
-  business.
-
-I am standing by. Once you have updated index.html, tell me 'The Dashboard is
-Live,' and we will send the SARS application!

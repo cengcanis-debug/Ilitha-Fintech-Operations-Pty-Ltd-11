@@ -24,38 +24,52 @@
     <p>Lighting the Path to Economic Opportunity</p>
     <div style="color: #00ffcc; font-size: 12px;">● Sentinel Autonomous Protection: ACTIVE</div>
 </header>
+
 <div class="grid">
     <div class="card">
         <div class="compliance-badge">EDUCATION</div>
         <h3>🎓 Sifiso SA AI Tutor</h3>
+        <p>CAPS/IEB aligned mentor. 100% Offline Ready.</p>
         <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a>
     </div>
     <div class="card">
         <div class="compliance-badge">NEW: K53 & DRIVEMASTER</div>
         <h3>🚦 K53 Artisan & 3D Sim</h3>
-        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Drive:+Start+3D+Simulation.">START TRAINING</a>
+        <p>Pass your learners first time with Socratic road-rules.</p>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_K53:+Start+License+Training.">GET YOUR LEARNERS</a>
     </div>
     <div class="card">
         <div class="compliance-badge">FINTECH</div>
         <h3>🇿🇦 ZAtax Adviser</h3>
-        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tax:+Get+SARS+Help.">GET TAX HELP</a>
+        <p>SARS-aligned tax guidance for individuals & SMEs.</p>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tax:+Check+SARS+Compliance.">GET TAX HELP</a>
     </div>
     <div class="card">
         <div class="compliance-badge">GOV-TECH</div>
         <h3>📑 SA Tender Assist</h3>
-        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tender:+Check+Compliance.">CHECK TENDERS</a>
+        <p>SMME Procurement & TCS status verification.</p>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Tender:+Verify+TCS+Status.">CHECK COMPLIANCE</a>
+    </div>
+    <div class="card">
+        <div class="compliance-badge">B2B LEGAL</div>
+        <h3>⚖️ LegisEstateSA</h3>
+        <p>Admin of Estates Act automation for Law Firms.</p>
+        <a class="btn-wa" href="https://wa.me/27711218698?text=Sentinel_Estate:+Attorney+B2B+Access.">FIRM ONBOARDING</a>
     </div>
     <div class="card">
         <div class="compliance-badge">ADMIN</div>
         <h3>🤝 Collaborations</h3>
+        <p>View the official sponsorship and partnership proposal.</p>
         <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW LETTERHEAD</a>
     </div>
 </div>
+
 <div class="footer">
     <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
     <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 71 121 8698</p>
     <p><a href="legal/privacy-policy.html">Privacy Policy</a> | Hardened by Sentinel AI</p>
 </div>
+
 <script>
     function unlockVault() {
         const pin = prompt("Enter Master PIN for Private Valuation Hub:");

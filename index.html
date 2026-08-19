@@ -7,33 +7,80 @@
     <style>
         :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
         body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
-        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); cursor: pointer; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
-        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; transition: 0.3s; text-align: left; }
-        .card:hover { transform: translateY(-5px); border-color: #00ffcc; }
-        .btn-wa { display: block; background: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
-        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; }
+        header { background: var(--blue); padding: 30px 20px; border-bottom: 4px solid var(--gold); cursor: pointer; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 30px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 20px; transition: 0.3s; text-align: left; }
+        .btn-launch { display: block; background: var(--gold); color: black; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; border: none; width: 100%; }
+        .btn-wa { display: block; background: #25D366; color: white; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; margin-top: 10px; text-align: center; font-size: 12px; opacity: 0.9; }
+        .footer { background: var(--sand); color: #333; padding: 20px; font-size: 12px; }
+        .badge { background: #00ffcc22; color: #00ffcc; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
 <body>
-<header onclick="unlockVault()">
+
+<header onclick="unlockValuation()">
     <div style="font-size: 40px;">🕯️</div>
-    <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <h1 style="letter-spacing: 2px; margin: 0;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
     <p>Lighting the Path to Economic Opportunity</p>
 </header>
+
 <div class="grid">
-    <div class="card"><h3>🎓 Sifiso SA AI Tutor</h3><a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a></div>
-    <div class="card"><h3>🚦 K53 Artisan & 3D Sim</h3><a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Drive:+Start+Training.">START K53</a></div>
-    <div class="card"><h3>⚖️ LegisEstateSA</h3><a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Estate:+Attorney+Access.">FIRM LOGIN</a></div>
-    <div class="card"><h3>🇿🇦 ZAtax Adviser</h3><a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Tax:+Get+SARS+Help.">GET TAX HELP</a></div>
-    <div class="card"><h3>📑 SA Tender Assist</h3><a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Tender:+Check+Compliance.">CHECK TENDERS</a></div>
-    <div class="card"><h3>💼 Career & Ispan</h3><a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Jobs:+Start+Coaching.">START COACHING</a></div>
-    <div class="card" style="background: var(--gold); color: black;"><h3>🤝 Collaborations</h3><a class="btn-wa" href="collaborate.html" style="background: var(--blue);">VIEW LETTER</a></div>
+    <!-- 1. Sifiso AI Tutor -->
+    <div class="card">
+        <div class="badge">EDUCATION | 100% OFFLINE READY</div>
+        <h3>🎓 Sifiso SA AI Tutor</h3>
+        <p>Interactive CAPS mentor for Grade 5-12. Mirror to TV for home study.</p>
+        <a class="btn-launch" href="https://ais-dev-qtyg5gxbqc32totbygzu6s-66007226743.europe-west2.run.app">OPEN TUTOR APP</a>
+        <a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Sifiso:+Help+me+get+started.">SUPPORT & SALES</a>
+    </div>
+
+    <!-- 2. K53 Artisan & DriveMaster -->
+    <div class="card">
+        <div class="badge">NEW: 3D SIMULATION</div>
+        <h3>🚦 K53 Artisan & DriveMaster</h3>
+        <p>Learn to drive with a real-feel 3D simulator. Rural & Urban modes.</p>
+        <a class="btn-launch" href="drive-sim.html">START DRIVING SIM</a>
+        <a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Drive:+I+want+to+test+the+simulator.">REQUEST LICENSE KEY</a>
+    </div>
+
+    <!-- 3. ZAtax Adviser -->
+    <div class="card">
+        <div class="badge">FINTECH | CROSS-BORDER</div>
+        <h3>🇿🇦 ZAtax Adviser</h3>
+        <p>SARS-aligned tax guidance for Expats & local SMEs. Hardened logic.</p>
+        <a class="btn-launch" href="tax-app.html">START TAX SESSION</a>
+        <a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Tax:+I+need+a+Tax+Practitioner.">SPEAK TO EXPERT</a>
+    </div>
+
+    <!-- 4. SA Tender Assist -->
+    <div class="card">
+        <div class="badge">GOV-TECH | SMME GROWTH</div>
+        <h3>📑 SA Tender Assist</h3>
+        <p>Verify TCS status and organize CSD documents autonomously.</p>
+        <a class="btn-launch" href="tender-app.html">OPEN TENDER HUB</a>
+        <a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Tender:+Help+me+with+a+CSD+upload.">UPLOAD CSD RECEIPT</a>
+    </div>
+    
+    <!-- 5. Collaborations -->
+    <div class="card" style="background: rgba(212, 175, 55, 0.1);">
+        <div class="badge">ADMIN & PARTNERS</div>
+        <h3>🤝 Strategic Collaborations</h3>
+        <p>Official Partnership Proposals & Letterhead for Sponsors.</p>
+        <a class="btn-launch" href="collaborate.html" style="background: #e6f1ff; color: var(--blue);">VIEW LETTERHEAD</a>
+    </div>
 </div>
+
 <div class="footer">
-    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Pending]</p>
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
     <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 84 739 1469</p>
+    <p><a href="legal/privacy-policy.html">POPIA Policy</a> | Hardened by Sentinel AI</p>
 </div>
-<script>function unlockVault() { const pin = prompt("Enter Master PIN:"); if (pin === "584461") { alert("Accessing Private Valuation Hub..."); } }</script>
+
+<script>
+    function unlockValuation() {
+        const pin = prompt("Enter Master PIN:");
+        if (pin === "584461") { alert("Accessing Private Valuation: R24,850,000.00"); }
+    }
+</script>
 </body>
 </html>

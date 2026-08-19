@@ -1,0 +1,16 @@
+{
+    "company": "Ilitha Fintech Operations Pty Ltd",
+    "hierarchy": {
+        "founder": "cengcanis@gmail.com",
+        "management": {
+            "associate": "Son_Over_21",
+            "auditor": "Jim"
+        },
+        "observers": ["Daughter_1", "Daughter_2", "Son_Teenager"],
+        "beneficiaries": ["Grandchild_1", "Grandchild_2"]
+    },
+    "emergency_protocol": {
+        "threshold_days": 21,
+        "dual_sign_off": true
+    }
+}

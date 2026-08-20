@@ -1,15 +1,40 @@
-<!-- Big Screen Learning Button -->
-<button onclick="activateTVMirror()" style="background: var(--blue); color: white; padding: 10px; border-radius: 5px; border: 1px solid var(--gold); cursor: pointer; width: 100%; margin-top: 5px;">
-    📺 CAST TO TELEVISION
-</button>
-
-<script>
-function activateTVMirror() {
-    if ('presentation' in navigator) {
-        alert("Sentinel: Searching for nearby Smart TVs... Please ensure your TV and phone are on the same WiFi.");
-        // Logic to trigger Cast API
-    } else {
-        alert("Ilitha Vision Note: Your device requires a USB-C to HDMI cable for manual TV connection. Opening Hardware Guide...");
-    }
-}
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilitha Fintech Operations | Mothership Hub</title>
+    <style>
+        :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
+        body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
+        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; transition: 0.3s; text-align: left; }
+        .btn-wa { display: block; background: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
+        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; }
+    </style>
+</head>
+<body>
+<header>
+    <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <p>Lighting the Path to Economic Opportunity</p>
+    <div style="color: #00ffcc; font-size: 12px;">● Sentinel Protection: ACTIVE</div>
+</header>
+<div class="grid">
+    <div class="card">
+        <h3>🎓 Sifiso SA AI Tutor</h3>
+        <p>100% Offline Ready CAPS Mentor.</p>
+        <a class="btn-wa" href="https://wa.me/27847391469?text=Sentinel_Sifiso:+Start+Learning.">LAUNCH TUTOR</a>
+    </div>
+    <div class="card">
+        <h3>🤝 Collaborations</h3>
+        <p>Strategic Partnership & Sponsorship Hub.</p>
+        <a class="btn-wa" href="collaborate.html" style="background: var(--gold); color: black;">VIEW LETTERHEAD</a>
+    </div>
+</div>
+<div class="footer">
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | 100% Youth & Female Owned</p>
+    <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 84 739 1469</p>
+</div>
+</body>
+</html>

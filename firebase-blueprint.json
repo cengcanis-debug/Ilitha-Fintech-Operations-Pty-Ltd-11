@@ -9,7 +9,7 @@
           "type": "string",
           "description": "UID of the candidate user matching their authentication record."
         },
-        "nationalId": {
+        "nationalIdToken": {
           "type": "string",
           "description": "South African 13-digit National Identity Number."
         },

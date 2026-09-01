@@ -1,34 +1,89 @@
-name: Python Package using Conda
+// File: /src/projects/zizamele/adapters/SaqaNlrdAdapter.ts
 
-on: [push]
+import axios from 'axios';
+import { db } from '../config/firebase'; // Firestore sandbox reference
 
-jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 5
+interface SaqaQueryPayload {
+  nationalId: string;
+  institutionName: string;
+  qualificationTitle: string;
+  nqfLevelProposed: number;
+}
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10'
-    - name: Add conda to system path
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        echo $CONDA/bin >> $GITHUB_PATH
-    - name: Install dependencies
-      run: |
-        conda env update --file environment.yml --name base
-    - name: Lint with flake8
-      run: |
-        conda install flake8
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
-      run: |
-        conda install pytest
-        pytest
+interface SaqaVerificationResult {
+  verified: boolean;
+  nqfLevelConfirmed: number;
+  saqaQualificationId: string | null;
+  registrationDate: string | null;
+  verificationSource: string;
+  responseTimestamp: string;
+}
+
+export class SaqaNlrdAdapter {
+  private static readonly SANDBOX_URL = 'https://nlrd-sandbox.saqa.org.za/v1/verify';
+  private static readonly LIAISON_OFFICER_REF = 'Dr. Thandiwe Ndlovu (NLRD Gateway)';
+
+  /**
+   * Performs an automated query against the National Learners' Records Database (NLRD)
+   * to verify candidate qualification claims.
+   */
+  public async verifyQualification(
+    candidateId: string,
+    payload: SaqaQueryPayload
+  ): Promise<SaqaVerificationResult> {
+    try {
+      // 1. Dispatch payload to SAQA NLRD Sandbox Gateway
+      const response = await axios.post(
+        SaqaNlrdAdapter.SANDBOX_URL,
+        {
+          id_number: payload.nationalId,
+          institution: payload.institutionName,
+          qualification: payload.qualificationTitle,
+          expected_nqf: payload.nqfLevelProposed,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Gateway-Liaison': SaqaNlrdAdapter.LIAISON_OFFICER_REF,
+            'Authorization': `Bearer ${process.env.SAQA_SANDBOX_TOKEN}`,
+          },
+          timeout: 8000, // Safe threshold before gateway timeout
+        }
+      );
+
+      const verificationData = response.data;
+
+      const result: SaqaVerificationResult = {
+        verified: verificationData.status === 'CONFIRMED',
+        nqfLevelConfirmed: Number(verificationData.confirmed_nqf_level) || 0,
+        saqaQualificationId: verificationData.qualification_id || null,
+        registrationDate: verificationData.registration_date || null,
+        verificationSource: 'SAQA NLRD Registry Gateway API',
+        responseTimestamp: new Date().toISOString(),
+      };
+
+      // 2. Update Firestore Sandbox records to increase "Achieved Metric" score
+      await db.collection('zizamele_candidates').doc(candidateId).update({
+        'educationalTrust.verificationStatus': result.verified ? 'VERIFIED' : 'FAILED',
+        'educationalTrust.nqfConfirmed': result.nqfLevelConfirmed,
+        'educationalTrust.saqaRef': result.saqaQualificationId,
+        'educationalTrust.lastChecked': result.responseTimestamp,
+      });
+
+      return result;
+
+    } catch (error: any) {
+      // Fallback: If gateway fails, log system telemetry for the Sentinel Monitor
+      console.error(`[SAQA NLRD GATEWAY ERROR]: ${error.message}`);
+      
+      return {
+        verified: false,
+        nqfLevelConfirmed: 0,
+        saqaQualificationId: null,
+        registrationDate: null,
+        verificationSource: 'SAQA NLRD Offline Simulation Mode',
+        responseTimestamp: new Date().toISOString(),
+      };
+    }
+  }
+}

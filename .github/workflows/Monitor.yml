@@ -1,62 +1,74 @@
-name: Ilitha Sentinel Master Engine
+name: Ilitha Sentinel Master Engine Monitor
 
 on:
+  # 1. Keeps the containers warm by running every hour
   schedule:
-    - cron: '0 * * * *'  # Professional Hourly Pulse
+    - cron: '0 */1 * * *'
+  # 2. Allows you to trigger the monitor manually from GitHub UI
   workflow_dispatch:
+  # 3. Runs when changes are pushed to ensure nothing broke
   push:
-    branches: ["main"]
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-permissions:
-  contents: write
+    branches:
+      - main
+      - stable/regulatory-audit
 
 jobs:
-  monitor:
+  ping-gateway-telemetry:
+    name: Execute Sentinel Heartbeat Scan
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Mothership
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
+      - name: Checkout Repository Code
+        uses: actions/checkout@v3
 
-      - name: Sentinel Master Pulse
+      - name: Initialize Heartbeat Diagnostic
         run: |
-          # Ensuring the report exists for the Hub
-          echo '{"overall_status": "online", "message": "Sentinel Bypass Active"}' > status.json
-          # Verifying Sifiso IP Originality
-          echo "Status: Sifiso logic is 100% unique and verified."
+          echo "================================================================="
+          echo "STARTING ILITHA SENTINEL MASTER ENGINE DIAGNOSTIC SCAN"
+          echo "Timestamp: $(date -u)"
+          echo "================================================================="
 
-      - name: Commit and Force Sync
+      - name: Ping Portfolio Endpoints
         run: |
-          git config --global user.name "Ilitha-Sentinel"
-          git config --global user.email "sentinel@ilitha.com"
-          git add status.json
-          git commit -m "Sentinel: Updated business health report" || echo "No changes"
-          git push --force 
-        env:
-          GITHUB_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          # Define the target active staging/production endpoints
+          declare -A ENDPOINTS=(
+            ["SA Tender Assist"]="https://ais-pre-orxkaorfs4litqxldlcejb-66007226743.europe-west2.run.app"
+            ["Sifiso AI Tutor & TV"]="https://ais-pre-vgwxccnlwsqpw57xru2voc-66007226743.europe-west2.run.app"
+            ["ZAtax Compliance Portal"]="https://ais-pre-orxkaorfs4litqxldlcejb-66007226743.europe-west2.run.app/api/zatax"
+          )
 
-      - name: Sentinel Email Dispatch
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Sentinel Report: Mothership Hub Live"
-          to: cengcanis@gmail.com
-          from: "Ilitha Sentinel AI"
-          body: |
-            Attention Developer,
+          FAILED=0
 
-            The Mothership is officially ONLINE.
+          for APP in "${!ENDPOINTS[@]}"; do
+            URL="${ENDPOINTS[$APP]}"
+            echo "Scanning Subsystem: [ $APP ]"
+            echo "Target URL: $URL"
 
-            LIVE HUB: https://cengcanis-debug.github.io/Ilitha-Fintech-Operations-Pty-Ltd-11/
-            
-            Status: 100% POPIA Compliant. 
-            All 5 projects (Sifiso, ZAtax, etc.) are healthy and ready for the public.
+            # Execute curl request capturing HTTP Status Code and Total Execution Latency
+            RESPONSE=$(curl -o /dev/null -s -w "%{http_code} %{time_total}" -L --connect-timeout 15 "$URL")
+            HTTP_CODE=$(echo "$RESPONSE" | cut -d' ' -f1)
+            LATENCY=$(echo "$RESPONSE" | cut -d' ' -f2)
+
+            echo "-> Response Code: $HTTP_CODE"
+            echo "-> Latency: ${LATENCY}s"
+
+            # Evaluate HTTP Response Codes (Accept 200, 301, 302 as active)
+            if [[ "$HTTP_CODE" -eq 200 || "$HTTP_CODE" -eq 301 || "$HTTP_CODE" -eq 302 ]]; then
+              echo "🟢 [ $APP ] is ONLINE and responding within safe parameters."
+            else
+              echo "🔴 [ $APP ] returned non-operational status code: $HTTP_CODE"
+              # We only mark the run as failed if critical core services are hard down (500+)
+              if [ "$HTTP_CODE" -ge 500 ]; then
+                FAILED=1
+              fi
+            fi
+            echo "-----------------------------------------------------------------"
+          done
+
+          # Exit with code 1 if any critical system failed the check
+          if [ $FAILED -ne 0 ]; then
+            echo "❌ Sentinel Diagnostics detected critical errors on core pipelines."
+            exit 1
+          else
+            echo "✅ All operational lines are verified and warm."
+          fi

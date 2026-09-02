@@ -1,0 +1,27 @@
+{
+  "short_name": "Sifiso AI",
+  "name": "Sifiso AI Tutor & Student App",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?utm_source=pwa_homescreen",
+  "background_color": "#064e3b",
+  "theme_color": "#064e3b",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/"
+}

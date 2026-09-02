@@ -1,0 +1,9 @@
+# Global repository fallback owner
+*       @cengcanis-debug
+
+# Restrict modifications to the automated monitor workflow
+/.github/workflows/Monitor.yml  @cengcanis-debug
+
+# Restrict modifications to the core security, tax, and SBD controllers
+/src/projects/career/controllers/ @cengcanis-debug
+/src/projects/career/adapters/    @cengcanis-debug

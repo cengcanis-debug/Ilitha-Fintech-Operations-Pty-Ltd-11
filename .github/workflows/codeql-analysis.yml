@@ -26,17 +26,18 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    # Initializes the CodeQL tools for scanning
+    # New Step: Restore Node.js dependencies to prevent Autobuild compile failures
+    - name: Install Node.js Dependencies
+      run: npm install --legacy-peer-deps
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
 
-    # Autobuild attempts to build any compiled languages
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
 
-    # Performs the actual security analysis
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
       with:

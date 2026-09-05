@@ -1,4 +1,4 @@
-// File: src/projects/career/controllers/SentinelSovereignGuardEngine.ts
+src/protects/career/controllers/SentinelSovereignGuardEngine.ts// File: src/projects/career/controllers/SentinelSovereignGuardEngine.ts
 
 import * as crypto from 'crypto';
 

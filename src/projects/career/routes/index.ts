@@ -5,19 +5,23 @@ import { Router } from 'express';
 import { SentinelSovereignGuardEngine } from '../../../controllers/SentinelSovereignGuardEngine'; 
 import { SentinelHubOrchestrator } from '../../../controllers/SentinelHubOrchestrator';
 import { runStatutoryVerification } from '../controllers/verificationController';
+import { runStatutoryAuditScan } from '../controllers/statutoryAuditController'; // NEW
 import { PayoutEscrowRouter } from '../controllers/payoutRouter';
 import { exportSarsTaxAuditLog } from '../controllers/taxAuditLogger';
 import { signSbdEightDeclaration } from '../controllers/sbdEightSignel'; // Matches your committed file name spelling
 import { syncSarsTaxPin } from '../controllers/sarsPinSync';
 import { SarsRule7DisputePackager } from '../controllers/SarsRule7DisputePackager';
 import { SarsProductionGatewaySwitchover } from '../controllers/SarsProductionGatewaySwitchover';
+import { SentinelMailGateway } from '../controllers/SentinelMailGateway';
 
 const router = Router();
 const payoutRouter = new PayoutEscrowRouter();
 const hubOrchestrator = new SentinelHubOrchestrator();
+const mailGateway = new SentinelMailGateway();
 
 // 1. Statutory Identity & Education Verification Routes (Upgrades DHA & SAQA to 100%)
 router.post('/verify/statutory', runStatutoryVerification);
+router.post('/verify/bulk-audit', runStatutoryAuditScan); // NEW
 
 // 2. Financial Escrow & Automated Payout Routes
 router.post('/payout/execute', (req, res) => payoutRouter.executeMonthlySettlement(req, res));
@@ -41,4 +45,10 @@ router.post('/security/sovereign-verify', (req, res) => {
 });
 
 // 6. Direct API Gateway Route for the Sentinel Brain Standalone Product
-router.post('/sentinel-hub/query', (req, res) => hubOrchestrator.handleInboundQuery(req, res))
+router.post('/sentinel-hub/query', (req, res) => hubOrchestrator.handleInboundQuery(req, res));
+
+// 7. Transactional Email Routes
+router.post('/mail/send-application', (req, res) => mailGateway.sendTrackedApplication(req, res));
+router.post('/mail/webhook-delivery', (req, res) => mailGateway.handleDeliveryWebhook(req, res));
+
+export default router;

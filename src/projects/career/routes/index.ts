@@ -3,6 +3,7 @@
 import { Router } from 'express';
 // Navigates up 3 levels to access the global controllers directory
 import { SentinelSovereignGuardEngine } from '../../../controllers/SentinelSovereignGuardEngine'; 
+import { SentinelHubOrchestrator } from '../../../controllers/SentinelHubOrchestrator';
 import { runStatutoryVerification } from '../controllers/verificationController';
 import { PayoutEscrowRouter } from '../controllers/payoutRouter';
 import { exportSarsTaxAuditLog } from '../controllers/taxAuditLogger';
@@ -13,6 +14,7 @@ import { SarsProductionGatewaySwitchover } from '../controllers/SarsProductionGa
 
 const router = Router();
 const payoutRouter = new PayoutEscrowRouter();
+const hubOrchestrator = new SentinelHubOrchestrator();
 
 // 1. Statutory Identity & Education Verification Routes (Upgrades DHA & SAQA to 100%)
 router.post('/verify/statutory', runStatutoryVerification);
@@ -38,4 +40,5 @@ router.post('/security/sovereign-verify', (req, res) => {
   }
 });
 
-export default router;
+// 6. Direct API Gateway Route for the Sentinel Brain Standalone Product
+router.post('/sentinel-hub/query', (req, res) => hubOrchestrator.handleInboundQuery(req, res))

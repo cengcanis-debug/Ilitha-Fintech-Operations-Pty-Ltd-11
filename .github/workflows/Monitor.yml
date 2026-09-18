@@ -1,74 +1,30 @@
-name: Ilitha Sentinel Master Engine Monitor
-
+name: Deploy static content to Pages
 on:
-  # 1. Keeps the containers warm by running every hour
-  schedule:
-    - cron: '0 */1 * * *'
-  # 2. Allows you to trigger the monitor manually from GitHub UI
-  workflow_dispatch:
-  # 3. Runs when changes are pushed to ensure nothing broke
   push:
-    branches:
-      - main
-      - stable/regulatory-audit
-
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 jobs:
-  ping-gateway-telemetry:
-    name: Execute Sentinel Heartbeat Scan
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository Code
-        uses: actions/checkout@v3
-
-      - name: Initialize Heartbeat Diagnostic
-        run: |
-          echo "================================================================="
-          echo "STARTING ILITHA SENTINEL MASTER ENGINE DIAGNOSTIC SCAN"
-          echo "Timestamp: $(date -u)"
-          echo "================================================================="
-
-      - name: Ping Portfolio Endpoints
-        run: |
-          # Define the target active staging/production endpoints
-          declare -A ENDPOINTS=(
-            ["SA Tender Assist"]="https://ais-pre-orxkaorfs4litqxldlcejb-66007226743.europe-west2.run.app"
-            ["Sifiso AI Tutor & TV"]="https://ais-pre-vgwxccnlwsqpw57xru2voc-66007226743.europe-west2.run.app"
-            ["ZAtax Compliance Portal"]="https://ais-pre-orxkaorfs4litqxldlcejb-66007226743.europe-west2.run.app/api/zatax"
-          )
-
-          FAILED=0
-
-          for APP in "${!ENDPOINTS[@]}"; do
-            URL="${ENDPOINTS[$APP]}"
-            echo "Scanning Subsystem: [ $APP ]"
-            echo "Target URL: $URL"
-
-            # Execute curl request capturing HTTP Status Code and Total Execution Latency
-            RESPONSE=$(curl -o /dev/null -s -w "%{http_code} %{time_total}" -L --connect-timeout 15 "$URL")
-            HTTP_CODE=$(echo "$RESPONSE" | cut -d' ' -f1)
-            LATENCY=$(echo "$RESPONSE" | cut -d' ' -f2)
-
-            echo "-> Response Code: $HTTP_CODE"
-            echo "-> Latency: ${LATENCY}s"
-
-            # Evaluate HTTP Response Codes (Accept 200, 301, 302 as active)
-            if [[ "$HTTP_CODE" -eq 200 || "$HTTP_CODE" -eq 301 || "$HTTP_CODE" -eq 302 ]]; then
-              echo "🟢 [ $APP ] is ONLINE and responding within safe parameters."
-            else
-              echo "🔴 [ $APP ] returned non-operational status code: $HTTP_CODE"
-              # We only mark the run as failed if critical core services are hard down (500+)
-              if [ "$HTTP_CODE" -ge 500 ]; then
-                FAILED=1
-              fi
-            fi
-            echo "-----------------------------------------------------------------"
-          done
-
-          # Exit with code 1 if any critical system failed the check
-          if [ $FAILED -ne 0 ]; then
-            echo "❌ Sentinel Diagnostics detected critical errors on core pipelines."
-            exit 1
-          else
-            echo "✅ All operational lines are verified and warm."
-          fi
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

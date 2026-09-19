@@ -1,113 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
+
+Ilitha-Fintech-Operations-Pty-Ltd-11
+Repository navigation
+Code
+Issues
+4
+ (4)
+Agents
+Commit 05541dd
+cengcanis-debug
+cengcanis-debug
+authored
+last month
+·
+·
+Verified
+Update index.html
+cengcanis-debug-patch-1
+1 parent 
+52dc92e
+ commit 
+05541dd
+1 file changed
+
++17
+-62
+Lines changed: 17 additions & 62 deletions
+Search within code
+ 
+‎index.html‎
+Original file line number	Diff line number	Diff line change
+@@ -3,89 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilitha DriveMaster | K53 Artisan Engine</title>
+    <title>Ilitha Fintech Operations | Official Hub</title>
+    <title>Ilitha Fintech Operations | Mothership Hub</title>
     <style>
-        :root { --blue: #004B8D; --gold: #D4AF37; --bg: #0a192f; --text: #e6f1ff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        header { background: var(--blue); padding: 20px; border-bottom: 3px solid var(--gold); text-align: center; }
-        .container { flex: 1; padding: 20px; max-width: 800px; margin: auto; width: 100%; }
-        .sim-box { background: rgba(255,255,255,0.05); border: 2px solid var(--gold); border-radius: 15px; padding: 30px; margin-bottom: 20px; min-height: 300px; }
-        .socratic-msg { border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 20px; font-style: italic; color: #00ffcc; }
-        .btn-option { display: block; width: 100%; background: #1e293b; color: white; border: 1px solid #334155; padding: 15px; margin: 10px 0; border-radius: 8px; cursor: pointer; text-align: left; font-size: 16px; }
-        .btn-option:hover { border-color: var(--gold); background: #2d3e50; }
-        .progress-bar { height: 10px; background: #1e293b; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-        .progress-fill { height: 100%; background: var(--gold); width: 0%; transition: 0.5s; }
-        .tv-btn { background: var(--blue); color: white; border: 1px solid var(--gold); padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 20px; font-weight: bold; }
-        .footer { font-size: 12px; opacity: 0.7; text-align: center; padding: 20px; }
+        :root { --blue: #004B8D; --gold: #D4AF37; --sand: #F5F5F4; --text: #e6f1ff; }
+        body { background-color: #0a192f; color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
+        header { background: var(--blue); padding: 40px 20px; border-bottom: 4px solid var(--gold); cursor: pointer; }
+        .logo-torch { font-size: 50px; margin-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 25px; text-align: left; transition: 0.3s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 30px; max-width: 1200px; margin: auto; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 15px; padding: 20px; text-align: left; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #00ffcc; }
+        .status-badge { color: #00ffcc; font-size: 10px; font-weight: bold; border: 1px solid #00ffcc; padding: 2px 8px; border-radius: 10px; margin-bottom: 10px; display: inline-block; }
+        .btn-wa { display: block; background: var(--gold); color: black; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
+        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; }
+        .footer { background: var(--sand); color: #333; padding: 30px 20px; margin-top: 50px; font-size: 13px; line-height: 1.6; }
+        .badge { background: #00ffcc22; color: #00ffcc; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-bottom: 10px; display: inline-block; border: 1px solid #00ffcc; }
     </style>
 </head>
 <body>
-
-<header>
-    <div style="font-size: 30px;">🕯️</div>
-    <h2 style="margin: 0; letter-spacing: 1px;">ILITHA DRIVEMASTER</h2>
-    <small>K53 Socratic Artisan Engine</small>
+<header onclick="unlockVault()">
+    <div class="logo-torch">🕯️</div>
+    <h1 style="letter-spacing: 2px;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <div style="font-size: 40px;">🕯️</div>
+    <h1 style="letter-spacing: 2px; margin: 0;">ILITHA FINTECH OPERATIONS PTY LTD</h1>
+    <p>Lighting the Path to Economic Opportunity</p>
+    <div style="color: #00ffcc; font-size: 12px;">● Sentinel Autonomous Protection: ACTIVE</div>
 </header>
-
-<div class="container">
-    <div class="progress-bar"><div class="progress-fill" id="p-fill"></div></div>
-    
-    <div class="sim-box" id="sim-screen">
-        <div id="lesson-content">
-            <div class="socratic-msg">Sawubona! I am Sifiso. Let's practice for your Learner's License.</div>
-            <h3>Ready to start your first simulation?</h3>
-            <p>We will cover Rules, Signs, and Vehicle Controls using real Mzansi scenarios.</p>
-            <button class="btn-option" onclick="startModule('urban')">🏙️ START URBAN DRIVING (City)</button>
-            <button class="btn-option" onclick="startModule('rural')">🚜 START RURAL DRIVING (Village)</button>
-        </div>
+<div class="grid">
+    <!-- 1. Sifiso AI Tutor -->
+    <div class="card">
+        <div class="status-badge">TRIAL ACTIVE</div>
+        <h3>🎓 Sifiso SA AI Tutor</h3>
+        <p>Interactive CAPS mentor. Forced registration active.</p>
+        <a class="btn-wa" href="launch.html?app=sifiso">START TESTING</a>
     </div>
-
-    <button class="tv-btn" onclick="castToTV()">📺 CAST TO TELEVISION FOR BIG SCREEN STUDY</button>
+    <!-- 2. K53 Artisan -->
+    <div class="card">
+        <div class="status-badge">TRIAL ACTIVE</div>
+        <h3>🚦 K53 & DriveMaster</h3>
+        <p>3D Simulator and Socratic road rules.</p>
+        <a class="btn-wa" href="launch.html?app=drive">START TESTING</a>
+    </div>
+    <!-- 3. LegisEstateSA -->
+    <div class="card">
+        <div class="status-badge">FIRM REGISTRATION</div>
+        <h3>⚖️ LegisEstateSA</h3>
+        <p>B2B automation for South African Law Firms.</p>
+        <a class="btn-wa" href="launch.html?app=estate">FIRM ONBOARDING</a>
+    </div>
+    <!-- 4. ZAtax Adviser -->
+    <div class="card">
+        <div class="status-badge">SARS COMPLIANT</div>
+        <h3>🇿🇦 ZAtax Adviser</h3>
+        <p>Cross-border tax guidance and tokenized filing.</p>
+        <a class="btn-wa" href="launch.html?app=tax">OPEN TAX HUB</a>
+    </div>
+    <!-- 5. SA Tender Assist -->
+    <div class="card">
+        <div class="status-badge">GOV-TECH</div>
+        <h3>📑 SA Tender Assist</h3>
+        <p>Verify compliance and manage CSD documents.</p>
+        <a class="btn-wa" href="launch.html?app=tender">OPEN TENDER HUB</a>
+    </div>
+    <!-- 6. Strategic Collaborations (The Open Door) -->
+    <div class="card" style="background: rgba(212, 175, 55, 0.1);">
+        <div class="status-badge" style="color: var(--gold); border-color: var(--gold);">ADMIN</div>
+        <h3>🤝 Collaborations</h3>
+        <p>Official sponsorship & partnership proposals.</p>
+        <a class="btn-wa" href="collaborate.html" style="background: var(--blue); color: white;">VIEW LETTERHEAD</a>
+    </div>
+    <div class="card"><div class="badge">EDUCATION</div><h3>🎓 Sifiso SA AI Tutor</h3><p>CAPS/IEB aligned mentor. Mirror to TV for study.</p><a class="btn-wa" href="launch.html?app=sifiso">START TESTING</a></div>
+    <div class="card"><div class="badge">K53 ARTISAN</div><h3>🚦 K53 & DriveMaster</h3><p>3D Simulation and Socratic road rules.</p><a class="btn-wa" href="launch.html?app=drive">START TESTING</a></div>
+    <div class="card"><div class="badge">FINTECH</div><h3>🇿🇦 ZAtax Adviser</h3><p>SARS-aligned tax guidance for individuals & SMEs.</p><a class="btn-wa" href="launch.html?app=tax">OPEN TAX HUB</a></div>
+    <div class="card"><div class="badge">GOV-TECH</div><h3>📑 SA Tender Assist</h3><p>Verify compliance and manage CSD documents.</p><a class="btn-wa" href="launch.html?app=tender">OPEN TENDER HUB</a></div>
+    <div class="card"><div class="badge">LEGAL-TECH</div><h3>⚖️ LegisEstateSA</h3><p>Automation for SME Law Firms. Quota Gate active.</p><a class="btn-wa" href="launch.html?app=estate">FIRM ONBOARDING</a></div>
+    <div class="card" style="background: rgba(212, 175, 55, 0.1);"><h3>🤝 Collaborations</h3><p>Official partnership proposals and letterhead.</p><a class="btn-wa" href="collaborate.html" style="background: var(--blue); color: white;">VIEW LETTERHEAD</a></div>
 </div>
-
 <div class="footer">
-    © 2026 Ilitha Fintech Operations Pty Ltd | POPIA Tokenization Active
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Registration: [Pending]</p>
+    <p><b>Ilitha Fintech Operations Pty Ltd</b> | Reg No: [Registration Pending]</p>
+    <p>🇿🇦 100% Youth-Led | >60% Female-Owned</p>
+    <p>No. 6787 Unique Homes, Mangaung, Bloemfontein | +27 84 739 1469</p>
+    <p><a href="legal/privacy-policy.html">Privacy Policy</a> | Hardened by Sentinel AI</p>
 </div>
-
 <script>
-    let score = 0;
-    const scenarios = {
-        urban: [
-            {
-                q: "You are driving in Bloemfontein CBD. A traffic light turns amber just as you reach the line. What is the safest action?",
-                options: ["Speed up to clear it", "Stop immediately if safe to do so", "Ignore it and keep going"],
-                correct: 1,
-                feedback: "Sharp sharp! Amber means 'Stop' unless you are so close that stopping would cause an accident."
-            },
-            {
-                q: "You see a blue circular sign with a white '60' inside. What does this mean?",
-                options: ["Maximum speed 60", "Recommended speed 60", "Minimum speed 60"],
-                correct: 2,
-                feedback: "Correct. Blue circles usually indicate 'Commands.' You must drive at least 60km/h here."
-            }
-        ],
-        rural: [
-            {
-                q: "On a narrow gravel road, you see a flock of sheep crossing. What is the legal requirement?",
-                options: ["Honk your horn", "Slow down and stop if necessary", "Drive through slowly"],
-                correct: 1,
-                feedback: "Correct. Road users must give way to animals being led on public roads."
-            }
-        ]
-    };
-
-    function startModule(type) {
-        let current = 0;
-        showQuestion(type, current);
-    }
-
-    function showQuestion(type, idx) {
-        const data = scenarios[type][idx];
-        if (!data) {
-            document.getElementById('sim-screen').innerHTML = `<h3>Module Complete!</h3><p>Your Sentinel Score: ${score}/2</p><button class="btn-option" onclick="location.reload()">RESTART</button>`;
-            return;
-        }
-
-        let html = `<h3>${data.q}</h3>`;
-        data.options.forEach((opt, i) => {
-            html += `<button class="btn-option" onclick="checkAns('${type}', ${idx}, ${i})">${opt}</button>`;
-        });
-        document.getElementById('lesson-content').innerHTML = html;
-    }
-
-    function checkAns(type, idx, choice) {
-        const data = scenarios[type][idx];
-        if (choice === data.correct) {
-            score++;
-            alert(data.feedback);
-        } else {
-            alert("Sentinel Note: That's a bad habit. Remember: Safety first!");
-        }
-        document.getElementById('p-fill').style.width = ((idx + 1) / scenarios[type].length) * 100 + "%";
-        showQuestion(type, idx + 1);
-    }
-
-    function castToTV() {
-        alert("Sentinel: Handshaking with TV... If using an older set, please plug in your HDMI cable now.");
+    function unlockVault() {
+        const pin = prompt("Enter Master PIN for Private Valuation Hub:");
+        if (pin === "584461") { alert("Founder Verified. Accessing ITEV Financial Safe..."); }
+        const pin = prompt("Enter Master PIN:");
+        if (pin === "584461") { alert("Founder Verified. Asset Value: R24,850,000.00"); }
     }
 </script>
 </body>
-</html>

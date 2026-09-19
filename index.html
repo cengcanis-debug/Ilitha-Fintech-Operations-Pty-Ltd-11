@@ -1,113 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilitha DriveMaster | K53 Artisan Engine</title>
-    <style>
-        :root { --blue: #004B8D; --gold: #D4AF37; --bg: #0a192f; --text: #e6f1ff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        header { background: var(--blue); padding: 20px; border-bottom: 3px solid var(--gold); text-align: center; }
-        .container { flex: 1; padding: 20px; max-width: 800px; margin: auto; width: 100%; }
-        .sim-box { background: rgba(255,255,255,0.05); border: 2px solid var(--gold); border-radius: 15px; padding: 30px; margin-bottom: 20px; min-height: 300px; }
-        .socratic-msg { border-left: 4px solid var(--gold); padding-left: 15px; margin-bottom: 20px; font-style: italic; color: #00ffcc; }
-        .btn-option { display: block; width: 100%; background: #1e293b; color: white; border: 1px solid #334155; padding: 15px; margin: 10px 0; border-radius: 8px; cursor: pointer; text-align: left; font-size: 16px; }
-        .btn-option:hover { border-color: var(--gold); background: #2d3e50; }
-        .progress-bar { height: 10px; background: #1e293b; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-        .progress-fill { height: 100%; background: var(--gold); width: 0%; transition: 0.5s; }
-        .tv-btn { background: var(--blue); color: white; border: 1px solid var(--gold); padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 20px; font-weight: bold; }
-        .footer { font-size: 12px; opacity: 0.7; text-align: center; padding: 20px; }
-    </style>
-</head>
-<body>
-
-<header>
-    <div style="font-size: 30px;">🕯️</div>
-    <h2 style="margin: 0; letter-spacing: 1px;">ILITHA DRIVEMASTER</h2>
-    <small>K53 Socratic Artisan Engine</small>
-</header>
-
-<div class="container">
-    <div class="progress-bar"><div class="progress-fill" id="p-fill"></div></div>
-    
-    <div class="sim-box" id="sim-screen">
-        <div id="lesson-content">
-            <div class="socratic-msg">Sawubona! I am Sifiso. Let's practice for your Learner's License.</div>
-            <h3>Ready to start your first simulation?</h3>
-            <p>We will cover Rules, Signs, and Vehicle Controls using real Mzansi scenarios.</p>
-            <button class="btn-option" onclick="startModule('urban')">🏙️ START URBAN DRIVING (City)</button>
-            <button class="btn-option" onclick="startModule('rural')">🚜 START RURAL DRIVING (Village)</button>
-        </div>
-    </div>
-
-    <button class="tv-btn" onclick="castToTV()">📺 CAST TO TELEVISION FOR BIG SCREEN STUDY</button>
-</div>
-
-<div class="footer">
-    © 2026 Ilitha Fintech Operations Pty Ltd | POPIA Tokenization Active
-</div>
-
-<script>
-    let score = 0;
-    const scenarios = {
-        urban: [
-            {
-                q: "You are driving in Bloemfontein CBD. A traffic light turns amber just as you reach the line. What is the safest action?",
-                options: ["Speed up to clear it", "Stop immediately if safe to do so", "Ignore it and keep going"],
-                correct: 1,
-                feedback: "Sharp sharp! Amber means 'Stop' unless you are so close that stopping would cause an accident."
-            },
-            {
-                q: "You see a blue circular sign with a white '60' inside. What does this mean?",
-                options: ["Maximum speed 60", "Recommended speed 60", "Minimum speed 60"],
-                correct: 2,
-                feedback: "Correct. Blue circles usually indicate 'Commands.' You must drive at least 60km/h here."
-            }
-        ],
-        rural: [
-            {
-                q: "On a narrow gravel road, you see a flock of sheep crossing. What is the legal requirement?",
-                options: ["Honk your horn", "Slow down and stop if necessary", "Drive through slowly"],
-                correct: 1,
-                feedback: "Correct. Road users must give way to animals being led on public roads."
-            }
-        ]
-    };
-
-    function startModule(type) {
-        let current = 0;
-        showQuestion(type, current);
+{
+  "system_integration_concept": {
+    "title": "Universal Plug-In Gateway: Ilitha Fintech Sentinel Connector",
+    "simple_explanation": "Think of this like an electrical wall socket in your house. Instead of building a new power generator, appliances just plug into the socket to get electricity. Our 'Plug-In' system works the same way: government departments, agencies, and businesses do not need to build their own tax engines, CV builders, or vetting tools. They simply plug their existing computer systems into our wall socket (using our APIs and Webhooks) to instantly access all the products in our catalog.",
+    "supported_partners": [
+      "Government Municipalities (for financial and SCM vetting)",
+      "Provincial Departments (for Z83 and PERSAL state-employee checks)",
+      "Private Businesses & HR Teams (for instant candidate mock interview scores)",
+      "Financial Institutions & Non-Profits (for automated tax clearance and Section 18A donor processing)"
+    ]
+  },
+  "three_plug_in_methods": [
+    {
+      "method_name": "The Direct Wire (REST API Connection)",
+      "how_it_works_simply": "The department's IT team gets a secure 'digital key' (an API Key) from their Ilitha dashboard. They add this key to their current software, allowing their system to talk directly to ours behind the scenes.",
+      "novice_example": "When a municipality opens a new tender bid, their system automatically sends the bidder list to us through this digital wire. In seconds, our system checks for tax compliance and PERSAL conflicts, returning the results directly to their screen."
+    },
+    {
+      "method_name": "The Automatic Alert (Webhooks)",
+      "how_it_works_simply": "Instead of the partner's system constantly asking us 'Is the job seeker ready yet?', our system automatically sends a secure digital alert (a webhook) to their system the exact millisecond a task is complete.",
+      "novice_example": "As soon as a candidate finishes their practice session and scores 85% (HIRE READY), our system alerts the connected HR department's database: 'Lindiwe M. is ready.' Her CV and PDF report are instantly pushed directly into their hiring folder without any manual email handling."
+    },
+    {
+      "method_name": "The Visual Window (Embeddable Widgets & Single Sign-On)",
+      "how_it_works_simply": "Partners can place a ready-made 'window' (an iframe or secure web widget) directly inside their own employee websites. Staff can log in using their standard office passwords (Single Sign-On) without needing to create a separate account for our system.",
+      "novice_example": "A government HR officer opens their internal portal, clicks the 'Vetting' tab, and sees our secure interface running safely inside their screen, letting them verify candidate qualifications instantly."
     }
-
-    function showQuestion(type, idx) {
-        const data = scenarios[type][idx];
-        if (!data) {
-            document.getElementById('sim-screen').innerHTML = `<h3>Module Complete!</h3><p>Your Sentinel Score: ${score}/2</p><button class="btn-option" onclick="location.reload()">RESTART</button>`;
-            return;
-        }
-
-        let html = `<h3>${data.q}</h3>`;
-        data.options.forEach((opt, i) => {
-            html += `<button class="btn-option" onclick="checkAns('${type}', ${idx}, ${i})">${opt}</button>`;
-        });
-        document.getElementById('lesson-content').innerHTML = html;
+  ],
+  "developer_api_prompts_for_studio_ai": [
+    {
+      "integration_target": "API Key Authentication & Security Layer",
+      "generation_prompt": "You are the security engineer at Ilitha Fintech. Write a middleware service in Node.js / Express for our API gateway. When a government department or business system makes a request to our endpoints, the middleware must extract the 'x-ilitha-api-key' from the request header, look up the active partner organization in our secure Supabase database, verify their subscription status, and enforce strict rate-limiting (maximum of 100 requests per minute for public sector accounts) before routing the request. Log all actions in an audit-trail database table for compliance tracking under POPIA."
+    },
+    {
+      "integration_target": "The Automated Vetting & Reporting Endpoint",
+      "generation_prompt": "You are the API developer at Ilitha Fintech. Write a secure HTTP POST endpoint '/api/v1/vet-candidate' that connected HR departments can plug into. The endpoint must accept a JSON payload containing the candidate's name, ID number, and academic certificate URL. The system must run our 'Career Mzantsi' vetting checks locally (checking for ID fraud patterns, PERSAL records, and certificate links), generate a cryptographically signed verification report (SHA-256), and return the results as a clean JSON payload. Ensure no file uploads or personal records are stored permanently on our servers during this operation."
+    },
+    {
+      "integration_target": "The Webhook Event Dispatcher",
+      "generation_prompt": "You are the integrations developer at Ilitha Fintech. Write an asynchronous background job worker in Dart/Node.js. When a candidate achieves an 80+ HIRE READY score in our mobile database, the system must fetch the webhook endpoint URL registered by the connected hiring employer. The worker must dispatch a POST request with a secure cryptographic signature in the header (SHA-256 hash of the payload using the partner's secret key) so they can verify the notification is authentic. Implement a automatic retry mechanism (exponential backoff) if the partner's system is temporarily offline."
     }
-
-    function checkAns(type, idx, choice) {
-        const data = scenarios[type][idx];
-        if (choice === data.correct) {
-            score++;
-            alert(data.feedback);
-        } else {
-            alert("Sentinel Note: That's a bad habit. Remember: Safety first!");
-        }
-        document.getElementById('p-fill').style.width = ((idx + 1) / scenarios[type].length) * 100 + "%";
-        showQuestion(type, idx + 1);
-    }
-
-    function castToTV() {
-        alert("Sentinel: Handshaking with TV... If using an older set, please plug in your HDMI cable now.");
-    }
-</script>
-</body>
-</html>
+  ]
+}

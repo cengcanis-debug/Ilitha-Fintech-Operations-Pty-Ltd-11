@@ -83,4 +83,5 @@ export default function App(){
 const s = {
   input:{padding:"10px", borderRadius:"10px", border:"1px solid #ccc", width:"100%", boxSizing:"border-box" as const},
   btnDark:{width:"100%", background:"#0f172a", color:"#fff", padding:"14px", borderRadius:12, border:"none", fontWeight:"bold" as const, marginTop:8},
-  btnGreen:{width:"100%", background:"#14b8a6", color:"#fff", padding:"14px", borderRadius:12
+  btnGreen:{width:"100%", background:"#14b8a6", color:"#fff", padding:"14px", borderRadius:12, border:"none", fontWeight:"bold" as const, marginTop:6}
+}
